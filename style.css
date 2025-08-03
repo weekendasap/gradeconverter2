@@ -1,0 +1,370 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef2f7; /* 은은한 파스텔 배경색 */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* 상단 정렬 */
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px; /* 전체 여백 추가 */
+    box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px; /* 상단 여백 추가 */
+}
+
+h1 {
+    color: #2c3e50; /* 진한 파란색 계열 */
+    margin-bottom: 15px;
+    font-size: 2.2em;
+}
+
+h2 {
+    color: #34495e;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 10px;
+    display: inline-block; /* h2 밑줄 너비 조절 */
+}
+
+h3 {
+    color: #4a647d;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.description, .note {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.note {
+    font-size: 0.95em;
+    color: #888;
+}
+
+.input-section {
+    margin-bottom: 35px;
+    text-align: left; /* 입력 섹션 내부 텍스트 왼쪽 정렬 */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.input-group.inline-fields {
+    flex-direction: row; /* 같은 줄에 배치 */
+    align-items: center;
+    flex-wrap: wrap; /* 작은 화면에서 줄바꿈 */
+}
+
+.input-group label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 1.05em;
+    width: auto; /* 라벨 너비 자동 */
+    margin-right: 10px; /* 라벨과 입력 필드 사이 간격 */
+    white-space: nowrap; /* 라벨 줄바꿈 방지 */
+}
+
+.input-group input[type="number"],
+.input-group input[type="text"],
+.input-group select { /* select 박스 스타일 추가 */
+    width: 100%; /* 너비 꽉 채우기 */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    box-sizing: border-box; /* 패딩 포함 */
+    background-color: #fff;
+    appearance: none; /* 기본 select 박스 스타일 제거 */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2C197.399L146.2%2C56.6C142.3%2C52.7%2C136.7%2C50.7%2C130.4%2C50.7c-6.3%2C0-11.9%2C2-15.8%2C5.9L5.4%2C197.399c-3.9%2C3.9-5.9%2C9.5-5.9%2C15.8c0%2C6.3%2C2%2C11.9%2C5.9%2C15.8l15.8%2C15.8c3.9%2C3.9%2C9.5%2C5.9%2C15.8%2C5.9c6.3%2C0%2C11.9-2%2C15.8-5.9l94.8-94.8l94.8%2C94.8c3.9%2C3.9%2C9.5%2C5.9%2C15.8%2C5.9c6.3%2C0%2C11.9-2%2C15.8-5.9l15.8-15.8c3.9-3.9%2C5.9-9.5%2C5.9-15.8C292.9%2C206.8%2C290.9%2C201.2%2C287%2C197.399z%22%2F%3E%3C%2Fsvg%3E'); /* 커스텀 화살표 */
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 12px;
+}
+
+.input-group input[type="number"]:focus,
+.input-group input[type="text"]:focus,
+.input-group select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* 점수/등수 입력 필드가 한 줄에 오도록 */
+.grade-inputs .input-group {
+    flex-direction: row;
+    flex-wrap: wrap; /* 작은 화면에서 줄바꿈 */
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #e9ecef; /* 경계선 추가 */
+    border-radius: 8px;
+    background-color: #fcfdff;
+}
+.grade-inputs .input-group label {
+    flex-basis: 30%; /* 라벨이 차지하는 비율 */
+    margin-bottom: 0;
+    text-align: right;
+    padding-right: 15px;
+}
+.grade-inputs .input-group input {
+    flex-basis: calc(70% / 2 - 10px); /* 나머지 공간을 2등분, 간격 고려 */
+    margin-right: 10px;
+    margin-bottom: 0; /* 라벨 아래로 오지 않도록 */
+}
+.grade-inputs .input-group input:last-of-type {
+    margin-right: 0;
+}
+
+
+.semester-section {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    border: 1px solid #e0e0e0;
+}
+
+.semester-section.coming-soon {
+    background-color: #f0f3f7;
+    color: #888;
+    text-align: center;
+    padding: 50px;
+    border-style: dashed;
+}
+
+.semester-section.coming-soon h2 {
+    color: #888;
+    border-bottom: none;
+}
+
+button {
+    background-color: #007bff; /* 파란색 버튼 */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+button:hover {
+    background-color: #0056b3; /* 어두운 파란색 */
+    transform: translateY(-2px);
+}
+
+.result-section {
+    margin-top: 50px;
+    border-top: 2px dashed #e0e0e0;
+    padding-top: 40px;
+    text-align: center;
+}
+
+.school-info {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4a647d;
+    margin-bottom: 30px;
+}
+
+.result-item {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 1.3em;
+    color: #1a1a1a;
+    font-weight: bold;
+    border: 1px solid #dee2e6;
+}
+
+.percentage-estimate {
+    background-color: #e9f5ff; /* 연한 하늘색 배경 */
+    color: #0056b3; /* 진한 파란색 글자 */
+    border-color: #b3e0ff;
+    font-size: 1.4em;
+    margin-top: 30px;
+    padding: 25px;
+}
+
+.percentage-estimate span {
+    color: #dc3545; /* 강조 색상 */
+    font-size: 1.2em;
+}
+
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 과목별 결과 그리드 */
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.grade-result-item {
+    background-color: #e6f7ff; /* 연한 하늘색 */
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    border: 1px solid #b3e0ff;
+    text-align: left;
+}
+
+.grade-result-item strong {
+    color: #0056b3;
+}
+
+.overall-percentage-title, .average-title, .chart-title, .ai-prediction-title, .ai-advice-title {
+    margin-top: 40px;
+    font-size: 1.8em;
+}
+
+.chart-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.ai-advice-box {
+    background-color: #fff3cd; /* 연한 노란색 배경 */
+    border-color: #ffeeba;
+    color: #856404; /* 진한 노란색 글자 */
+    text-align: left;
+    font-size: 1.1em;
+    padding: 25px;
+    line-height: 1.6;
+}
+
+.ai-advice-box p {
+    margin-bottom: 10px;
+}
+.ai-advice-box p:last-child {
+    margin-bottom: 0;
+}
+.ai-advice-box strong {
+    color: #856404;
+}
+
+/* 성적 변화율 스타일 */
+.grade-result-item .change-indicator {
+    display: inline-block;
+    margin-left: 5px;
+    font-weight: bold;
+}
+.grade-result-item .change-indicator.up {
+    color: #28a745; /* 초록색 */
+}
+.grade-result-item .change-indicator.down {
+    color: #dc3545; /* 빨간색 */
+}
+.grade-result-item .change-indicator.no-change {
+    color: #6c757d; /* 회색 */
+}
+
+/* 차트 보기 옵션 버튼 */
+.chart-controls {
+    margin-bottom: 20px;
+}
+
+.chart-controls button {
+    background-color: #6c757d; /* 회색 */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin: 0 5px;
+    transition: background-color 0.2s ease;
+    box-shadow: none; /* 버튼 자체 그림자 제거 */
+}
+
+.chart-controls button.active {
+    background-color: #007bff; /* 활성 버튼은 파란색 */
+    font-weight: bold;
+}
+
+.chart-controls button:hover:not(.active) {
+    background-color: #5a6268;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+    h1 {
+        font-size: 1.8em;
+    }
+    h2 {
+        font-size: 1.5em;
+    }
+    .grade-inputs, .result-grid {
+        grid-template-columns: 1fr; /* 모바일에서는 한 줄에 하나씩 */
+    }
+    .input-group {
+        flex-direction: column; /* 세로로 다시 정렬 */
+        align-items: flex-start;
+    }
+    .input-group label {
+        flex-basis: auto;
+        width: 100%;
+        text-align: left;
+        padding-right: 0;
+        margin-bottom: 5px;
+    }
+    .input-group input, .input-group select {
+        flex-basis: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .input-group input:last-of-type {
+        margin-bottom: 0;
+    }
+    /* 특정 입력 그룹만 수평 정렬 유지 */
+    .grade-inputs .input-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .grade-inputs .input-group label {
+        flex-basis: 30%; /* 라벨이 차지하는 비율 */
+        margin-bottom: 0;
+        text-align: right;
+        padding-right: 15px;
+    }
+    .grade-inputs .input-group input {
+        flex-basis: calc(70% / 2 - 10px); /* 나머지 공간을 2등분, 간격 고려 */
+        margin-right: 10px;
+        margin-bottom: 0;
+    }
+    .chart-container {
+        width: 95%; /* 모바일에서는 차트 너비 늘림 */
+    }
+}
