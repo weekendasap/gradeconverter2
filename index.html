@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내신 성적 비교 및 분석</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="theme-color" content="#ffffff">
+</head>
+
+<body>
+    <div class="container">
+        <h1>내신 성적 비교 및 분석</h1>
+        <p class="description">
+            고등학교 1학년 1학기 내신 성적을 입력하여 등급, 성취도, 학교 내 위치를 확인하고,
+            <br>전교 등수를 한눈에 파악하세요.
+            <br>예체능 과목은 1학년 1학기 기말고사에만 입력하며, 1~5등급 중 선택하거나 수강하지 않은 경우 '수강 안 함'을 선택할 수 있습니다.
+        </p>
+
+        <div class="input-section">
+            <h2>학교 및 인원 정보</h2>
+            <div class="input-group">
+                <label for="schoolName">고등학교 이름:</label>
+                <input type="text" id="schoolName" placeholder="예: 구리고등학교">
+            </div>
+            <div class="input-group">
+                <label for="totalStudents">전체 1학년 학생 수:</label>
+                <input type="number" id="totalStudents" min="1" placeholder="예: 200">
+            </div>
+        </div>
+
+        <div class="semester-section">
+            <h2>1학년 1학기</h2>
+
+            <h3>중간고사 (주요 과목 점수 및 등수 입력)</h3>
+            <p class="note">각 과목별로 점수 (0~100점)와 등수 (1등부터 전체 학생 수 이내)를 입력하세요.</p>
+            <div class="grade-inputs blue-accent">
+                <div class="input-group">
+                    <label for="koreanMidScore1">국어 중간:</label>
+                    <input type="number" id="koreanMidScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="koreanMidRank1">국어 (중간 등수):</label>
+                    <input type="number" id="koreanMidRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="englishMidScore1">영어 중간:</label>
+                    <input type="number" id="englishMidScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="englishMidRank1">영어 (중간 등수):</label>
+                    <input type="number" id="englishMidRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="mathMidScore1">수학 중간:</label>
+                    <input type="number" id="mathMidScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="mathMidRank1">수학 (중간 등수):</label>
+                    <input type="number" id="mathMidRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="scienceMidScore1">과학 중간:</label>
+                    <input type="number" id="scienceMidScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="scienceMidRank1">과학 (중간 등수):</label>
+                    <input type="number" id="scienceMidRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="koreanHistoryMidScore1">한국사 중간:</label>
+                    <input type="number" id="koreanHistoryMidScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="koreanHistoryMidRank1">한국사 (중간 등수):</label>
+                    <input type="number" id="koreanHistoryMidRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="socialMidScore1">사회 중간:</label>
+                    <input type="number" id="socialMidScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="socialMidRank1">사회 (중간 등수):</label>
+                    <input type="number" id="socialMidRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+            </div>
+
+            <h3>기말고사 (주요 과목 점수 및 등수 입력)</h3>
+            <p class="note">각 과목별로 점수 (0~100점)와 등수 (1등부터 전체 학생 수 이내)를 입력하세요.</p>
+            <div class="grade-inputs blue-accent">
+                <div class="input-group">
+                    <label for="koreanFinalScore1">국어 기말:</label>
+                    <input type="number" id="koreanFinalScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="koreanFinalRank1">국어 (기말 등수):</label>
+                    <input type="number" id="koreanFinalRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="englishFinalScore1">영어 기말:</label>
+                    <input type="number" id="englishFinalScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="englishFinalRank1">영어 (기말 등수):</label>
+                    <input type="number" id="englishFinalRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="mathFinalScore1">수학 기말:</label>
+                    <input type="number" id="mathFinalScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="mathFinalRank1">수학 (기말 등수):</label>
+                    <input type="number" id="mathFinalRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="scienceFinalScore1">과학 기말:</label>
+                    <input type="number" id="scienceFinalScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="scienceFinalRank1">과학 (기말 등수):</label>
+                    <input type="number" id="scienceFinalRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="koreanHistoryFinalScore1">한국사 기말:</label>
+                    <input type="number" id="koreanHistoryFinalScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="koreanHistoryFinalRank1">한국사 (기말 등수):</label>
+                    <input type="number" id="koreanHistoryFinalRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="socialFinalScore1">사회 기말:</label>
+                    <input type="number" id="socialFinalScore1" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="socialFinalRank1">사회 (기말 등수):</label>
+                    <input type="number" id="socialFinalRank1" min="1" placeholder="등수" step="1" inputmode="numeric">
+                </div>
+            </div>
+
+            <h3>예체능 과목 (음악, 체육, 미술) 등급 선택 - 1학년 1학기 기말고사에만 해당</h3>
+            <p class="note">1~5등급 중 선택하거나, 수강하지 않은 경우 '수강 안 함'을 선택하세요.</p>
+            <div class="grade-inputs">
+                <div class="input-group">
+                    <label for="musicGrade1">음악 (1~5등급):</label>
+                    <select id="musicGrade1">
+                        <option value="">선택</option>
+                        <option value="not-taken">수강 안 함</option>
+                        <option value="1">1등급</option>
+                        <option value="2">2등급</option>
+                        <option value="3">3등급</option>
+                        <option value="4">4등급</option>
+                        <option value="5">5등급</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="peGrade1">체육 (1~5등급):</label>
+                    <select id="peGrade1">
+                        <option value="">선택</option>
+                        <option value="not-taken">수강 안 함</option>
+                        <option value="1">1등급</option>
+                        <option value="2">2등급</option>
+                        <option value="3">3등급</option>
+                        <option value="4">4등급</option>
+                        <option value="5">5등급</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label for="artGrade1">미술 (1~5등급):</label>
+                    <select id="artGrade1">
+                        <option value="">선택</option>
+                        <option value="not-taken">수강 안 함</option>
+                        <option value="1">1등급</option>
+                        <option value="2">2등급</option>
+                        <option value="3">3등급</option>
+                        <option value="4">4등급</option>
+                        <option value="5">5등급</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2학기: 점수 입력 섹션 추가 -->
+        <div class="semester-section">
+            <h2>1학년 2학기</h2>
+
+            <h3>중간고사 (주요 과목 점수 입력)</h3>
+            <p class="note">각 과목별로 점수 (0~100점)를 입력하세요.</p>
+            <div class="grade-inputs blue-accent">
+                <div class="input-group">
+                    <label for="koreanMidScore2">국어 중간:</label>
+                    <input type="number" id="koreanMidScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="englishMidScore2">영어 중간:</label>
+                    <input type="number" id="englishMidScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="mathMidScore2">수학 중간:</label>
+                    <input type="number" id="mathMidScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="scienceMidScore2">과학 중간:</label>
+                    <input type="number" id="scienceMidScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="koreanHistoryMidScore2">한국사 중간:</label>
+                    <input type="number" id="koreanHistoryMidScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="socialMidScore2">사회 중간:</label>
+                    <input type="number" id="socialMidScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                </div>
+            </div>
+
+            <h3>기말고사 (주요 과목 점수 입력)</h3>
+            <p class="note">각 과목별로 점수 (0~100점)를 입력하세요.</p>
+            <div class="grade-inputs blue-accent">
+                <div class="input-group">
+                    <label for="koreanFinalScore2">국어 기말:</label>
+                    <input type="number" id="koreanFinalScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="englishFinalScore2">영어 기말:</label>
+                    <input type="number" id="englishFinalScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="mathFinalScore2">수학 기말:</label>
+                    <input type="number" id="mathFinalScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="scienceFinalScore2">과학 기말:</label>
+                    <input type="number" id="scienceFinalScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                </div>
+                <div class="input-group">
+                    <label for="koreanHistoryFinalScore2">한국사 기말:</label>
+                    <input type="number" id="koreanHistoryFinalScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                    <label for="socialFinalScore2">사회 기말:</label>
+                    <input type="number" id="socialFinalScore2" class="score-input" min="0" max="100" placeholder="점수" step="1" inputmode="numeric">
+                </div>
+            </div>
+        </div>
+
+        <div class="semester-section coming-soon">
+            <h2>2학년</h2>
+            <p>준비 중입니다.</p>
+        </div>
+
+        <div class="semester-section coming-soon">
+            <h2>3학년</h2>
+            <p>준비 중입니다.</p>
+        </div>
+
+        <!-- 결과 버튼 영역 -->
+        <div class="actions">
+            <button id="calculateBtn">결과 보기</button>
+            <button id="resetBtn" class="btn-secondary">초기화</button>
+        </div>
+
+        <div class="result-section">
+            <h2>계산 결과</h2>
+            <p id="resultSchoolInfo" class="school-info"></p>
+
+            <h3>과목별 1학기 등급 및 성취도</h3>
+            <div id="gradeResults" class="result-grid">
+            </div>
+
+            <h3 class="overall-percentage-title">나의 전교 등수 백분위 (1학기)</h3>
+            <div id="overallPercentage" class="result-item percentage-estimate">
+            </div>
+
+            <h3 class="chart-title">학교 내 위치 시각화 (9등급제 & 5등급제)</h3>
+            <div class="chart-container">
+                <canvas id="gradeChart"></canvas>
+            </div>
+
+            <!-- 과목별 점수 비교 꺾은선 그래프 -->
+            <h3 class="chart-title">1학년 1학기 vs 2학기 과목별 점수 비교</h3>
+            <div class="chart-container">
+                <canvas id="scoreRankChangeChart"></canvas>
+            </div>
+
+            <!-- 요약 지표 섹션 추가 -->
+            <h3 class="average-title">요약 지표</h3>
+            <div id="summaryInsights" class="result-item summary-box"></div>
+
+            <h3 class="ai-advice-title">AI 입시 조언 및 방향</h3>
+            <div id="aiAdvice" class="result-item ai-advice-box">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
